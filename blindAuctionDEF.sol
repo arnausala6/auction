@@ -352,9 +352,9 @@ contract BlindAuctionFinalV2 {
     function performUpkeep(bytes calldata performData) external {
         uint256 action = abi.decode(performData, (uint256));
         if (action == 0) {
-            this.finalize();
+            finalize();
         } else if (action == 1) {
-            this.advanceWinnerIfUnpaid();
+            advanceWinnerIfUnpaid();
         }
     }
 
