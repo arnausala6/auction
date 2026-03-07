@@ -71,7 +71,7 @@ contract BlindAuctionFinalV2 {
     bool public finalized;
     bool public auctionSuccessful;
     bool public auctionDeserted;
-    bool public authorizedKeeper;
+    address public authorizedKeeper;
 
     uint256 public currentWinnerIndex;
     uint256 public paymentDeadlineBlock; // [B] MODIFICADO
