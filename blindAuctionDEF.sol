@@ -335,6 +335,13 @@ contract BlindAuctionFinalV2 {
         
         emit EmergencyWithdraw(msg.sender, deposit);
     }
+    function withdrawProceeds() external {
+        require(msg.sender == owner, "Solo owner");
+        uint256 amount = ownerProceeds;
+        ownerProceeds = 0;
+        (bool ok,) = payable(owner).call{value: amount}("");
+        require(ok, "Transfer fallo");
+    }
 
     // ─────────────────────────────────────────────────────────────
     // [E] MODIFICADO: Integración de Bot (Estándar Chainlink Keepers)
