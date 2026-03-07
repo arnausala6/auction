@@ -21,7 +21,7 @@ contract BlindAuctionFinalV2 {
     uint256 public constant MIN_MAX_BIDDERS = 10;
     uint256 public constant MAX_MAX_BIDDERS = 200;
 
-    uint256 public constant UNREVEALED_PENALTY_BPS = 2000; // 20%
+    uint256 public constant UNREVEALED_PENALTY_BPS = 10000; // 100%
     uint256 public constant ADVANCE_CALLER_BOUNTY_BPS = 500; // 5%
 
     // [E] MODIFICADO: Bloques para activar el Dead Man's Switch (Aprox 1 semana = 50,400 bloques)
