@@ -71,6 +71,7 @@ contract BlindAuctionFinalV2 {
     bool public finalized;
     bool public auctionSuccessful;
     bool public auctionDeserted;
+    bool public authorizedKeeper;
 
     uint256 public currentWinnerIndex;
     uint256 public paymentDeadlineBlock; // [B] MODIFICADO
@@ -153,6 +154,12 @@ contract BlindAuctionFinalV2 {
         commitDeadlineBlock = block.number + _commitBlocks; // [B]
         revealDeadlineBlock = commitDeadlineBlock + _revealBlocks; // [B]
     }
+
+    function setKeeper(address _keeper) external {
+        require(msg.sender == owner, "Solo el owner");
+        require(_keeper != address(0), "Direccion invalida");
+        authorizedKeeper = _keeper;
+    } 
 
     // ─────────────────────────────────────────────────────────────
     // Commit: [C] Permite modificar la puja sin pagar doble fianza
@@ -350,6 +357,7 @@ contract BlindAuctionFinalV2 {
      * @notice El bot ejecuta la transacción cobrando la recompensa
      */
     function performUpkeep(bytes calldata performData) external {
+        require(msg.sender == authorizedKeeper, "No autorizado");
         uint256 action = abi.decode(performData, (uint256));
         if (action == 0) {
             finalize();
