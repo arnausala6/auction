@@ -108,7 +108,7 @@ contract BlindAuctionFinalV2 {
     }
 
     modifier afterReveal() {
-        require(block.number >= revealDeadlineBlock, "Reveal no terminado"); // [B]
+        require(block.number > revealDeadlineBlock, "Reveal no terminado"); // [B]
         _;
     }
 
