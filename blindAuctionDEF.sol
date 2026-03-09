@@ -14,11 +14,11 @@ contract BlindAuctionFinalV2 {
 
     // [B] MODIFICADO: Usamos bloques en lugar de tiempo. (Aprox 12 seg por bloque)
     // 25 bloques son aprox 5 minutos.
-    uint256 public constant MIN_COMMIT_BLOCKS  = 25;
-    uint256 public constant MIN_REVEAL_BLOCKS  = 25;
-    uint256 public constant MIN_PAYMENT_BLOCKS = 25;
+    uint256 public constant MIN_COMMIT_BLOCKS  = 5; //test
+    uint256 public constant MIN_REVEAL_BLOCKS  = 5;
+    uint256 public constant MIN_PAYMENT_BLOCKS = 5;
 
-    uint256 public constant MIN_MAX_BIDDERS = 10;
+    uint256 public constant MIN_MAX_BIDDERS = 3;
     uint256 public constant MAX_MAX_BIDDERS = 200;
 
     uint256 public constant UNREVEALED_PENALTY_BPS = 10000; // 100%
