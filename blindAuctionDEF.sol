@@ -367,9 +367,9 @@ contract BlindAuctionFinalV2 {
         require(msg.sender == authorizedKeeper, "No autorizado");
         uint256 action = abi.decode(performData, (uint256));
         if (action == 0) {
-            finalize();
+            this.finalize();
         } else if (action == 1) {
-            advanceWinnerIfUnpaid();
+            this.advanceWinnerIfUnpaid();
         }
     }
 
